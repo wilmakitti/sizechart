@@ -72,4 +72,3 @@ while True:
     if another_clothing != "y":
         print("Thank you for using our size guide. Have a great day!")
         break  # Exit the loop if the user doesn't want to check the size for another clothing
-
