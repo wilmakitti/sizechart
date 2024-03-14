@@ -1,0 +1,3 @@
+Username, email address, password, phone number, measurements
+wilma,wilma@wilma.love,hellowilmalove,0123456789,NaN
+testeUser,testuser@example.com,testPassword,9876543210,NaN
