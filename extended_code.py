@@ -5,6 +5,56 @@ print("Size guide")
 def convert_cm_to_inches(self, value):
     return value * 0.393701
 
+# Class to manage user creation, login, and storing user objects.
+class UserManager:
+    def __init__(self):
+        self.users = {}
+
+    def create_user(self, username, email):
+        if username in self.users:
+            print("Username already exists.")
+            return None
+        new_user = User(username, email)
+        self.users[username] = new_user
+        print(f"User {username} created.")
+        return new_user
+
+    def get_user(self, username):
+        return self.users.get(username, None)
+    
+def main():
+    user_manager = UserManager()
+    current_user = None
+    
+    while True:
+        if not current_user:
+            action = input("Choose action: sign in (si), create account (ca), or quit (q): ").lower()
+            if action == "q":
+                break
+            elif action == "si":
+                username = input("Username: ")
+                current_user = user_manager.get_user(username)
+                if not current_user:
+                    print("User not found.")
+                    continue
+            elif action == "ca":
+                username = input("Choose a username: ")
+                email = input("Email: ")
+                current_user = user_manager.create_user(username, email)
+        else:
+            print(f"\nWelcome, {current_user.username}.")
+            action = input("Choose action: update measurements (um), shop garments (sg), make order (mo), sign out (so): ").lower()
+            if action == "so":
+                current_user.sign_out()
+                current_user = None
+            elif action == "um":
+                current_user.update_measurements()
+            elif action == "ab":
+                item = input("Enter item to add to basket: ")
+                current_user.add_to_basket(item)
+            elif action == "mo":
+                current_user.make_order()
+
 # Class to hold user information and measurements:
 class User:
     
@@ -95,60 +145,8 @@ class User:
             return
 
 
-# Class to manage user creation, login, and storing user objects.
-class UserManager:
-    def __init__(self):
-        self.users = {}
-
-    def create_user(self, username, email):
-        if username in self.users:
-            print("Username already exists.")
-            return None
-        new_user = User(username, email)
-        self.users[username] = new_user
-        print(f"User {username} created.")
-        return new_user
-
-    def get_user(self, username):
-        return self.users.get(username, None)
-    
-def main():
-    user_manager = UserManager()
-    current_user = None
-    
-    while True:
-        if not current_user:
-            action = input("Choose action: sign in (si), create account (ca), or quit (q): ").lower()
-            if action == "q":
-                break
-            elif action == "si":
-                username = input("Username: ")
-                current_user = user_manager.get_user(username)
-                if not current_user:
-                    print("User not found.")
-                    continue
-            elif action == "ca":
-                username = input("Choose a username: ")
-                email = input("Email: ")
-                current_user = user_manager.create_user(username, email)
-        else:
-            print(f"\nWelcome, {current_user.username}.")
-            action = input("Choose action: update measurements (um), shop garments (sg), make order (mo), sign out (so): ").lower()
-            if action == "so":
-                current_user.sign_out()
-                current_user = None
-            elif action == "um":
-                current_user.update_measurements()
-            elif action == "ab":
-                item = input("Enter item to add to basket: ")
-                current_user.add_to_basket(item)
-            elif action == "mo":
-                current_user.make_order()
-
-if __name__ == "__main__":
-    main()
-
-
-    another_clothing = input("Do you want to check the size for another clothing? (y/n): ").lower().strip()
-    if another_clothing != "y":
-        print("Thank you for using our size guide. Have a great day!")
+        if __name__ == "__main__":
+            main()
+            another_clothing = input("Do you want to check the size for another clothing? (y/n): ").lower().strip()
+            if another_clothing != "y":
+                print("Thank you for using our size guide. Have a great day!")
