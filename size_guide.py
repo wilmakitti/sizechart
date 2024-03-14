@@ -15,7 +15,7 @@ with open("user_manager.txt", 'w') as file:
     phone_number = ["0123456789", "9876543210"]
     measurements = ["NaN", "NaN"]
 
-    # Iterating over the range of the list length
+    # Iterating over the range of the list length...
     for i in range(len(username)):
         entry = f"{username[i]},{email_address[i]},{password[i]},{phone_number[i]},{measurements[i]}\n"
         file.write(entry)
