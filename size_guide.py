@@ -5,10 +5,12 @@ print("Size guide")
 def convert_cm_to_inches(self, value):
     return value * 0.393701
 
-    # Iterating over the range of the list length...
-    for i in range(len(username)):
-        entry = f"{username[i]},{email_address[i]},{password[i]},{phone_number[i]},{measurements[i]}\n"
-        file.write(entry)
+# Creating a dictionary for user data:
+user_data = {
+    1: {'Userame': 'wilma', 'Password': 'wilma12345', 'Email address': 'wilma@wilma.wilma', 'Measurements': []},
+    2: {'Userame': 'test', 'Password': 'test123', 'Email address': 'test@gmail.com', 'Measurements': []},
+    3: {'Userame': 'test2', 'Password': 'test1232', 'Email address': 'test2@gmail.com', 'Measurements': []}
+}
 
 # Class to manage user creation, login, and storing user objects.
 class UserManager:
