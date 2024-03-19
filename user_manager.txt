@@ -1,3 +1,22 @@
 Username, email address, password, phone number, measurements
-wilma,wilma@wilma.love,hellowilmalove,0123456789,NaN
+wilma,wilma@wilma.fi,hellowilma,0123456789,NaN
 testeUser,testuser@example.com,testPassword,9876543210,NaN
+
+# Creating a file 
+# Creating a file
+with open("user_manager.txt", 'w') as file:
+    # Writing the header line
+    file.write("Username, email address, password, phone number, measurements\n")
+
+    # Assuming you have multiple users and hence multiple entries in each list,
+    # make sure all lists (username, email_address, etc.) have the same length
+    username = ["wilma", "testeUser"]
+    email_address = ["wilma@wilma.fi", "testuser@example.com"]
+    password = ["hellowilma", "testPassword"]
+    phone_number = ["0123456789", "9876543210"]
+    measurements = ["NaN", "NaN"]
+
+    # Iterating over the range of the list length...
+    for i in range(len(username)):
+        entry = f"{username[i]},{email_address[i]},{password[i]},{phone_number[i]},{measurements[i]}\n"
+        file.write(entry)
