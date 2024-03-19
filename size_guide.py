@@ -1,29 +1,14 @@
 # Guide to help the user to pick a right size while online shopping
 print("Size guide")
 
-# Creating a file 
-# Creating a file
-with open("user_manager.txt", 'w') as file:
-    # Writing the header line
-    file.write("Username, email address, password, phone number, measurements\n")
-
-    # Assuming you have multiple users and hence multiple entries in each list,
-    # make sure all lists (username, email_address, etc.) have the same length
-    username = ["wilma", "testeUser"]
-    email_address = ["wilma@wilma.love", "testuser@example.com"]
-    password = ["hellowilmalove", "testPassword"]
-    phone_number = ["0123456789", "9876543210"]
-    measurements = ["NaN", "NaN"]
+# Default is centimeters, this code will convert the values into inches:
+def convert_cm_to_inches(self, value):
+    return value * 0.393701
 
     # Iterating over the range of the list length...
     for i in range(len(username)):
         entry = f"{username[i]},{email_address[i]},{password[i]},{phone_number[i]},{measurements[i]}\n"
         file.write(entry)
-
-
-# Default is centimeters, this code will convert the values into inches:
-def convert_cm_to_inches(self, value):
-    return value * 0.393701
 
 # Class to manage user creation, login, and storing user objects.
 class UserManager:
@@ -54,6 +39,8 @@ def main():
             elif action == "si":
                 username = input("Username: ")
                 current_user = user_manager.get_user(username)
+                current_user = username
+                print(current_user)
                 if not current_user:
                     print("User not found.")
                     continue
